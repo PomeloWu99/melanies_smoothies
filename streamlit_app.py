@@ -29,8 +29,7 @@ ingredient_list = st.multiselect(
 
 if ingredient_list:
 	ingredient_str = ''
-
-    	for fruit_chosen in ingredient_list:
+	for fruit_chosen in ingredient_list:
 		ingredient_str += fruit_chosen+' '
 		st.subheader(fruit_chosen+" Nutrition Information")
 		fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_chosen)
@@ -42,6 +41,7 @@ if ingredient_list:
 	time_to_insert = st.button('Submit Order')
 	
 	if time_to_insert:
+
 		session.sql(my_insert_stmt).collect()
 		
 	st.success('Your Smoothie is ordered!', icon="✅")
